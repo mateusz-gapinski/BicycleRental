@@ -1,8 +1,11 @@
 package com.bicyclerental.controller;
 
+import com.bicyclerental.Bicycle;
 import com.bicyclerental.BicycleStation;
+import com.bicyclerental.dtos.BicycleDTO;
 import com.bicyclerental.dtos.BicycleStationDTOLong;
 import com.bicyclerental.dtos.mappers.BicycleStationMapper;
+import com.bicyclerental.service.BicycleService;
 import com.bicyclerental.service.BicycleStationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,9 +28,10 @@ public class BicycleStationController {
 
     @Autowired
     public BicycleStationController(
-            BicycleStationService bicycleService,
+            BicycleStationService bicycleStationService,
             BicycleStationMapper bicycleStationMapper) {
-        this.bicycleStationService = bicycleService;
+
+        this.bicycleStationService = bicycleStationService;
         this.bicycleStationMapper = bicycleStationMapper;
     }
 
@@ -56,5 +60,17 @@ public class BicycleStationController {
     @DeleteMapping("/{id}")
     public void deleteCustomer(@PathVariable Long id) {
         bicycleStationService.deleteBicycleStation(id);
+    }
+
+    @PostMapping("/{stationId}/rent/{bicycleId}")
+    public BicycleDTO rentBicycle(@PathVariable Long stationId, @PathVariable Long bicycleId) {
+        Bicycle bicycle = bicycleStationService.rentBicycle(bicycleId, stationId);
+        return  bicycleStationMapper.toBicycleDTO(bicycle);
+    }
+
+    @PostMapping("/{stationId}/return/{bicycleId}")
+    public BicycleDTO returnBicycle(@PathVariable Long stationId, @PathVariable Long bicycleId) {
+        Bicycle bicycle = bicycleStationService.returnBicycle(bicycleId, stationId);
+        return  bicycleStationMapper.toBicycleDTO(bicycle);
     }
 }
