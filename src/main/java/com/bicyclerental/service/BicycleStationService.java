@@ -2,6 +2,8 @@ package com.bicyclerental.service;
 
 import com.bicyclerental.Bicycle;
 import com.bicyclerental.BicycleStation;
+import com.bicyclerental.exceptions.InvalidOperationException;
+import com.bicyclerental.exceptions.ResourceNotFoundException;
 import com.bicyclerental.repository.BicycleRepository;
 import com.bicyclerental.repository.BicycleStationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,13 +60,13 @@ public class BicycleStationService {
                     bicycleRepository.save(bicycle);
                     return bicycle;
                 } else {
-                    throw new IllegalStateException("Bicycle is not available for rent");
+                    throw new InvalidOperationException("Bicycle is not available for rent");
                 }
             } else {
-                throw new IllegalStateException("BicycleStation doesn't have this bicycle");
+                throw new ResourceNotFoundException("BicycleStation doesn't have this bicycle");
             }
         } else {
-            throw new IllegalArgumentException("Bicycle or BicycleStation not found");
+            throw new ResourceNotFoundException("Bicycle or BicycleStation not found");
         }
     }
 
@@ -86,13 +88,13 @@ public class BicycleStationService {
                     bicycleRepository.save(bicycle);
                     return bicycle;
                 } else {
-                    throw new IllegalStateException("Bicycle is already available for rent");
+                    throw new InvalidOperationException("Bicycle is already available for rent");
                 }
             } else {
-                throw new IllegalStateException("BicycleStation doesn't have this bicycle");
+                throw new ResourceNotFoundException("BicycleStation doesn't have this bicycle");
             }
         } else {
-            throw new IllegalArgumentException("Bicycle or BicycleStation not found");
+            throw new ResourceNotFoundException("Bicycle or BicycleStation not found");
         }
     }
 }
