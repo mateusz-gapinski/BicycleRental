@@ -25,7 +25,7 @@ public class BicycleStationDTOShortTest {
     @Test
     public void testAddress() {
         BicycleStationDTOShort station = new BicycleStationDTOShort();
-        String address = "123 Main St, New York, NY";
+        String address = "al. Politechniki 1";
         station.setAddress(address);
         assertEquals(address, station.getAddress());
     }

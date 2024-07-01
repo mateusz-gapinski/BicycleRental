@@ -19,7 +19,7 @@ public class BicycleStationDTOLongTest {
     @Test
     public void testName() {
         BicycleStationDTOLong station = new BicycleStationDTOLong();
-        String name = "Central Park Station";
+        String name = "Bicycle Rental II";
         station.setName(name);
         assertEquals(name, station.getName());
     }
@@ -27,7 +27,7 @@ public class BicycleStationDTOLongTest {
     @Test
     public void testAddress() {
         BicycleStationDTOLong station = new BicycleStationDTOLong();
-        String address = "123 Main St, New York, NY";
+        String address = "al. Politechniki 1";
         station.setAddress(address);
         assertEquals(address, station.getAddress());
     }
