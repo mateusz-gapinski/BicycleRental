@@ -41,9 +41,7 @@ public class BicycleStation {
         this.name = name;
     }
 
-    public List<Bicycle> getBicycles() {
-        return List.copyOf(bicycles);
-    }
+    public List<Bicycle> getBicycles() { return bicycles; }
 
     public void setBicycles(List<Bicycle> bicycles) { this.bicycles = bicycles; }
 
