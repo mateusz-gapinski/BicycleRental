@@ -14,22 +14,5 @@ public class BicycleRentalApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(BicycleRentalApplication.class, args);
-
-
-		//String[] beanNames = ctx.getBeanDefinitionNames();
-		//Arrays.sort(beanNames);
-		//for (String beanName : beanNames) {
-		//	System.out.println(beanName);
-		//}
-
-		
 	}
-
-	//@Bean
-	//ApplicationRunner applicationRunner(Environment environment) {
-	//	return args -> {
-	//		//log.info("message from application.properties " + environment.getProperty("message-from-application-properties"));
-	//	};
-	//}
-
 }

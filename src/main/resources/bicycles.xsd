@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://bicyclerental.com/bicycles"
+           targetNamespace="http://bicyclerental.com/bicycles"
+           elementFormDefault="qualified">
+
+    <xs:element name="getBicycleRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="bicycleId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getBicycleResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="model" type="xs:string"/>
+                <xs:element name="color" type="xs:string"/>
+                <xs:element name="available" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
