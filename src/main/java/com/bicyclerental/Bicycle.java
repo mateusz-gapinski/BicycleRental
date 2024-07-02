@@ -14,7 +14,7 @@ public class Bicycle {
     private Long id;
     private String model;
     private String color;
-    private boolean available;
+    private boolean available = true;
     @ManyToOne
     private BicycleStation owningStation;
 

@@ -45,7 +45,7 @@ public class BicycleService {
             if (color != null) {
                 bicycle.setColor(color);
             }
-            return bicycle;
+            return bicycleRepository.save(bicycle);
         } else {
             throw new ResourceNotFoundException("Bicycle with id:" + id + "doesn't exist!");
         }
