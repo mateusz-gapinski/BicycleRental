@@ -1,5 +1,6 @@
 package com.bicyclerental.soap;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +17,6 @@ import org.springframework.xml.xsd.XsdSchema;
 @Configuration
 public class WebServiceConfig extends WsConfigurerAdapter {
 
-    // Configure message dispatcher servlet
     @Bean
     public ServletRegistrationBean<MessageDispatcherServlet> messageDispatcherServlet(
             ApplicationContext applicationContext) {
@@ -26,7 +26,6 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         return new ServletRegistrationBean<>(servlet, "/ws/*");
     }
 
-    // Configure WSDL definition bean
     @Bean(name = "bicycles")
     public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema bicyclesSchema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
@@ -37,7 +36,6 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         return wsdl11Definition;
     }
 
-    // Configure XML schema bean
     @Bean
     public XsdSchema bicyclesSchema() {
         return new SimpleXsdSchema(new ClassPathResource("bicycles.xsd"));

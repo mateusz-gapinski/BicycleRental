@@ -2,7 +2,6 @@ package com.bicyclerental;
 
 import org.junit.jupiter.api.Test;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.*;

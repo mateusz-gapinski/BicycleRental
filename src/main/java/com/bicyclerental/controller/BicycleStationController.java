@@ -4,6 +4,7 @@ import com.bicyclerental.Bicycle;
 import com.bicyclerental.BicycleStation;
 import com.bicyclerental.dtos.BicycleDTO;
 import com.bicyclerental.dtos.BicycleStationDTOLong;
+import com.bicyclerental.dtos.BicycleStationDTOShort;
 import com.bicyclerental.dtos.mappers.BicycleStationMapper;
 import com.bicyclerental.service.BicycleService;
 import com.bicyclerental.service.BicycleStationService;
@@ -46,8 +47,8 @@ public class BicycleStationController {
 
     @PostMapping
     public BicycleStationDTOLong createBicycleStation(
-            @RequestBody BicycleStationDTOLong bicycleStationDTOLong) {
-        BicycleStation bicycleStation = bicycleStationMapper.toEntity(bicycleStationDTOLong);
+            @RequestBody BicycleStationDTOShort bicycleStationDTOShort) {
+        BicycleStation bicycleStation = bicycleStationMapper.toEntity(bicycleStationDTOShort);
         bicycleStationService.addBicycleStation(bicycleStation);
         return  bicycleStationMapper.toDto(bicycleStation);
     }

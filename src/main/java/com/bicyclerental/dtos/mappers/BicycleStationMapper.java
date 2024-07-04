@@ -4,6 +4,7 @@ import com.bicyclerental.Bicycle;
 import com.bicyclerental.BicycleStation;
 import com.bicyclerental.dtos.BicycleDTO;
 import com.bicyclerental.dtos.BicycleStationDTOLong;
+import com.bicyclerental.dtos.BicycleStationDTOShort;
 import com.bicyclerental.service.BicycleStationService;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -27,8 +28,7 @@ public abstract class BicycleStationMapper {
     //@Mapping(source = "id", target = "id")
     @Mapping(source = "name", target = "name")
     @Mapping(source = "address", target = "address")
-    //@Mapping(source = "bicycles", target = "bicycles", qualifiedByName = "toBicycles")
-    public abstract BicycleStation toEntity(BicycleStationDTOLong bicycleStationDTOLong);
+    public abstract BicycleStation toEntity(BicycleStationDTOShort bicycleStationDTOShort);
 
     @Named("toBicycleDTOs")
     public List<BicycleDTO> toBicycleDTOs(List<Bicycle> bicycles) {
@@ -45,13 +45,6 @@ public abstract class BicycleStationMapper {
             target = "owningStation",
             qualifiedByName = "extractBicycleStationId")
     public abstract BicycleDTO toBicycleDTO(Bicycle address);
-
-    @Named("toBicycles")
-    public List<Bicycle> toBicycles(List<BicycleDTO> bicycleDTOs) {
-        return bicycleDTOs.stream()
-                .map(this::toBicycle)
-                .collect(Collectors.toList());
-    }
 
     //@Mapping(source = "id", target = "id")
     @Mapping(source = "model", target = "model")
